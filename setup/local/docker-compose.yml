@@ -2,6 +2,6 @@ version: '3.3'
 services:
   main-api:
     container_name: main-api
-    image: test_cicd_local
+    image: quoctang/test_cicd_image:v1.0.0
     ports: 
       - 3000:3000
