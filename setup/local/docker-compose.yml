@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  main-api:
+    container_name: main-api
+    image: test_cicd_local
+    ports: 
+      - 3000:3000
