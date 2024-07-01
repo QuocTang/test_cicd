@@ -24,7 +24,7 @@ pipeline {
 		stage('AWS stage') {
 			steps {
 				sshagent(['ssh-remote']) {
-					sh 'ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST} "touch jenkins_test.txt"'
+					sh 'ssh -o StrictHostKeyChecking=no -l root ${REMOTE_HOST} "touch jenkins_test.txt"'
 				}
 			}
 		}
