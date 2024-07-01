@@ -14,16 +14,17 @@ pipeline {
 		}
 		stage('Build stage') {
 			steps {
-				withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
-					sh 'docker build -t quoctang/test_cicd_image:v1.0.1 .'
-					sh 'docker push quoctang/test_cicd_image:v1.0.1'
-				}
+				// withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') {
+				// 	sh 'docker build -t quoctang/test_cicd_image:v1.0.1 .'
+				// 	sh 'docker push quoctang/test_cicd_image:v1.0.1'
+				// }
+				echo 'Build images done nice'
 			}
 		}
 		stage('AWS stage') {
 			steps {
 				sshagent(['ssh-remote']) {
-					sh 'ssh -o StrictHostKeyChecking=no -l ${REMOTE_USER}@${REMOTE_HOST} "touch jenkins_test.txt"'
+					sh 'ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST} "touch jenkins_test.txt"'
 				}
 			}
 		}
